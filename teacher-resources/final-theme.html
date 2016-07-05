@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>{Title}</title>
+
+    <style src="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css"></style>
+    <style>
+        body {
+            font-family: "Helvetica";
+        }
+        header {
+            text-align: center;
+            border-bottom: 2px solid rgb(0, 0, 0);
+        }
+        article {
+            background: rgb(240, 240, 240);
+            padding: 20px;
+            margin: 20px;
+        }
+        footer {
+            border-top: 2px solid rgb(0, 0, 0);
+            text-align: center;
+        }
+        aside{
+            border-top: 1px solid rgb(0, 0, 0);
+            display: flex;
+            padding: 5px;
+        }
+        aside div {
+            margin: 0 5px;
+        }
+        .previous-button,
+        .next-button {
+            display: inline-block;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 3px;
+            text-decoration: none;
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>{Title}</h1>
+    <p>{Description}</p>
+</header>
+
+{block:Posts}
+<section>
+    {block:Text}
+    <article>
+        {block:Title}
+        <h2>{Title}</h2>
+        {/block:Title}
+        <p>{Body}</p>
+        <aside>
+            <div class='post-note-count'>Notes: {NoteCount}</div>
+            <div class='post-like-button'>{LikeButton}</div>
+            <div class='post-reblog-button'>{ReblogButton}</div>
+        </aside>
+    </article>
+    {/block:Text}
+
+    {block:Photo}
+    <article>
+        <img src="{PhotoURL-500}" alt="{PhotoAlt}">
+        {block:Caption}
+        {Caption}
+        {/block:Caption}
+        <aside>
+            <div class='post-note-count'>Notes: {NoteCount}</div>
+            <div class='post-like-button'>{LikeButton}</div>
+            <div class='post-reblog-button'>{ReblogButton}</div>
+        </aside>
+    </article>
+    {/block:Photo}
+
+    {block:Link}
+    <article>
+        <h2><a href="{URL}" {Target}>{Name}</a></h2>
+        {block:Description}
+        {Description}
+        {/block:Description}
+        <aside>
+            <div class='post-note-count'>Notes: {NoteCount}</div>
+            <div class='post-like-button'>{LikeButton}</div>
+            <div class='post-reblog-button'>{ReblogButton}</div>
+        </aside>
+    </article>
+    {/block:Link}
+
+</section>
+{/block:Posts}
+
+
+
+<footer>
+    <nav>
+        {block:PreviousPage}
+        <a class='previous-button' href="{PreviousPage}">Previous page</a>
+        {/block:PreviousPage}
+        {block:NextPage}
+        <a class='next-button' href="{NextPage}">Next page</a>
+        {/block:NextPage}
+    </nav>
+</footer>
+</body>
+</html>
